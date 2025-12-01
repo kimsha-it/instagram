@@ -1,7 +1,9 @@
 package com.example.instagram.service;
 
-import org.springframework.stereotype.Service;
+import com.example.instagram.dto.request.SignUpRequest;
+import com.example.instagram.entity.User;
 
-@Service
 public interface UserService {
+
+    User register(SignUpRequest signUpRequest);
 }
