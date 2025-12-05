@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <form enctype="multipart/form-data"
-                            th:action="@{/profile/edit}"
+                          th:action="@{/profile/edit}"
                           th:object="${profileUpdateRequest}"
                           method="post"
                     >
@@ -71,7 +71,7 @@
                                       placeholder="자기소개를 입력하세요"></textarea>
                             <div class="invalid-feedback" th:if="${#fields.hasErrors('bio')}"
                                  th:errors="*{bio}"></div>
-                            <div class="form-text">최대 150자까지 입력 가능합니다.</div>
+                            <div class="form-text">최대 200자까지 입력 가능합니다.</div>
                         </div>
 
                         <!-- 버튼 -->

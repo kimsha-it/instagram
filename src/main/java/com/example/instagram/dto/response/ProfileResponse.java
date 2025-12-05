@@ -12,7 +12,7 @@ public class ProfileResponse {
     private String username;
     private String bio;
     private String name;
-    private String profileImgUrl;
+    private String profileImageUrl;
 
     // 통계
     private long postCount;
@@ -26,24 +26,30 @@ public class ProfileResponse {
                 .username(user.getUsername())
                 .bio(user.getBio())
                 .name(user.getName())
-                .profileImgUrl(user.getProfileImageUrl())
+                .profileImageUrl(user.getProfileImageUrl())
                 .postCount(0)
                 .followerCount(0)
                 .followingCount(0)
                 .build();
     }
 
-    public static ProfileResponse from(User user, long postCount, long followerCount, long followingCount) {
+
+    public static ProfileResponse from(
+            User user,
+            long postCount,
+            long followerCount,
+            long followingCount) {
         return ProfileResponse.builder()
                 .id(user.getId())
                 .username(user.getUsername())
                 .bio(user.getBio())
                 .name(user.getName())
-                .profileImgUrl(user.getProfileImageUrl())
+                .profileImageUrl(user.getProfileImageUrl())
                 .postCount(postCount)
                 .followerCount(followerCount)
                 .followingCount(followingCount)
                 .build();
+
     }
 
 

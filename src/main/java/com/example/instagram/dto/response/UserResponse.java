@@ -1,5 +1,6 @@
 package com.example.instagram.dto.response;
 
+
 import com.example.instagram.entity.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,5 +25,4 @@ public class UserResponse {
                 .profileImageUrl(user.getProfileImageUrl())
                 .build();
     }
-
 }
