@@ -6,6 +6,7 @@ import com.example.instagram.dto.request.PostCreateRequest;
 import com.example.instagram.dto.response.CommentResponse;
 import com.example.instagram.dto.response.PostResponse;
 import com.example.instagram.security.CustomUserDetails;
+import com.example.instagram.service.BookmarkService;
 import com.example.instagram.service.CommentService;
 import com.example.instagram.service.PostService;
 import com.example.instagram.service.LikeService;
@@ -27,6 +28,7 @@ public class PostController {
     private final PostService postService;
     private final CommentService commentService;
     private final LikeService likeService;
+    private final BookmarkService bookmarkService;
 
 
     @GetMapping("/new")
@@ -66,6 +68,8 @@ public class PostController {
         model.addAttribute("comments", comments);
         model.addAttribute("liked", likeService.isLiked(id, userDetails.getId()));
         model.addAttribute("likeCount", likeService.getLikeCount(id));
+        model.addAttribute("bookmarked", bookmarkService.isBookmarked(id, userDetails.getId()));
+        model.addAttribute("bookmarkCount", bookmarkService.getBookmarkCount(id));
         return "post/detail";
     }
 
@@ -100,6 +104,15 @@ public class PostController {
             @AuthenticationPrincipal CustomUserDetails userDetails
     ) {
         likeService.toggleLike(id, userDetails.getId());
+        return "redirect:/posts/" + id;
+    }
+
+    @PostMapping("{id}/bookmark")
+    public String toggleBookmark(
+            @PathVariable Long id,
+            @AuthenticationPrincipal CustomUserDetails userDetails
+    ) {
+        bookmarkService.toggleBookmark(id, userDetails.getId());
         return "redirect:/posts/" + id;
     }
 
